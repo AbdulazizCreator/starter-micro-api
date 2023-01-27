@@ -45,7 +45,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // Check for user
   const user = await User.findOne({ username }).select("+password");
-
+  
   if (!user) {
     return next(new ErrorResponse("Bu foydalanuvchi mavjud emas !", 401));
   }
@@ -90,7 +90,7 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
   user.password = req.body.newPassword;
 
   await user.save();
-  
+
   sendTokenResponse(user, 200, res);
 });
 

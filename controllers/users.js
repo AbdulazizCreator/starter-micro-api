@@ -25,7 +25,7 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 // @access Private/Admin
 
 exports.createUser = asyncHandler(async (req, res, next) => {
-  let user = await User.create(req.body);
+  let new_user = await User.create(req.body);
   res.status(201).json({ success: true, data: new_user });
 });
 
