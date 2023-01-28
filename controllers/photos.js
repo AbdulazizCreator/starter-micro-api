@@ -34,7 +34,7 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
 
   file.name = `${photo.id}${path.parse(file.name).ext}`;
   console.log(file.name);
-  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
+  file.mv(`/tmp/${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
     if (err) {
       console.log(err);
       return next(new ErrorResponse(`Problem with file upload`, 500));
