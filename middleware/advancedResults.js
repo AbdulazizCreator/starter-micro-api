@@ -57,26 +57,20 @@ const advancedResults =
     let pagination = {};
 
     if (endIndex < total) {
-      pagination.next = {
-        page: page + 1,
-        limit: limit,
-      };
+      pagination.next = page + 1;
     }
 
     if (startIndex > 0) {
-      pagination.prev = {
-        page: page - 1,
-        limit: limit,
-      };
+      pagination.prev = page - 1;
     }
-
+    pagination.total = total;
+    pagination.limit = limit;
     res.advancedResults = {
       success: true,
       count: results.length,
       pagination,
       data: results,
     };
-
     next();
   };
 
