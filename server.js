@@ -34,7 +34,12 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // File uploading
-app.use(fileupload());
+app.use(
+  fileupload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
 
 // Enable CORS
 app.use(cors());
